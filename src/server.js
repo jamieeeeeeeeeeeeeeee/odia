@@ -1,4 +1,4 @@
-import { handler } from "..build/handler.js";
+import { handler } from "../build/handler.js";
 import { Server, Socket } from "socket.io";
 import { createServer } from "http";
 import express from "express";
@@ -100,7 +100,14 @@ io.on("connection", (socket) => {
   });
 
   // Host will start the game
-  socket.on("pick-trump") => {
-  }
+  /* socket.on("pick-trump") => {
+  }*/
 
+});
+
+
+app.use(handler);
+
+app.listen(process.env.port || 5073, () => {
+    console.log("Listening on port" + process.env.port || 5073);
 });
