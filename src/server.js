@@ -108,6 +108,6 @@ io.on("connection", (socket) => {
 
 app.use(handler);
 
-app.listen(process.env.port || 5073, () => {
-    console.log("Listening on port" + process.env.port || 5073);
+app.listen(process.env.PORT ? process.env.PORT : 5073, () => {
+    console.log("Listening on port" + process.env.PORT ? process.env.PORT : 5073);
 });
