@@ -1,12 +1,10 @@
+import { handler } from "./build/handler.js";
 import express from "express";
 
 const app = express();
 app.use(express.json());
 
-app.get("/", (req, res) => {
-    res.send("Hello World!");
-    }
-);
+app.use(handler);
 
 /* This is being hosted using Azure Web App Service */
 const port = 8080;
