@@ -8,40 +8,9 @@
       "_internal.js"
     ]
   },
-  "_Button.js": {
-    "file": "chunks/Button.js",
-    "name": "Button",
-    "imports": [
-      "_ssr.js"
-    ],
-    "css": [
-      "_app/immutable/assets/Button.DFeZmM1O.css"
-    ]
-  },
-  "_client.js": {
-    "file": "chunks/client.js",
-    "name": "client",
-    "imports": [
-      "_exports.js"
-    ]
-  },
   "_exports.js": {
     "file": "chunks/exports.js",
     "name": "exports"
-  },
-  "_index.js": {
-    "file": "chunks/index.js",
-    "name": "index",
-    "imports": [
-      "_ssr.js"
-    ]
-  },
-  "_india.js": {
-    "file": "chunks/india.js",
-    "name": "india",
-    "assets": [
-      "_app/immutable/assets/india.DUir8Hr0.png"
-    ]
   },
   "_internal.js": {
     "file": "chunks/internal.js",
@@ -61,7 +30,7 @@
     "isEntry": true,
     "imports": [
       "_ssr.js",
-      "_client.js"
+      "_exports.js"
     ]
   },
   "node_modules/@sveltejs/kit/src/runtime/components/layout.svelte": {
@@ -81,16 +50,8 @@
     "imports": [
       "_internal.js",
       "_exports.js",
-      "_index.js"
+      "_ssr.js"
     ]
-  },
-  "src/lib/assets/clubs2.svg": {
-    "file": "_app/immutable/assets/clubs2.AeF3XKAh.svg",
-    "src": "src/lib/assets/clubs2.svg"
-  },
-  "src/lib/assets/india.png": {
-    "file": "_app/immutable/assets/india.DUir8Hr0.png",
-    "src": "src/lib/assets/india.png"
   },
   "src/routes/+page.svelte": {
     "file": "entries/pages/_page.svelte.js",
@@ -98,67 +59,7 @@
     "src": "src/routes/+page.svelte",
     "isEntry": true,
     "imports": [
-      "_ssr.js",
-      "_Button.js",
-      "_india.js",
-      "_client.js"
-    ],
-    "css": [
-      "_app/immutable/assets/_page.CgTIoE6C.css"
-    ]
-  },
-  "src/routes/cards/+page.svelte": {
-    "file": "entries/pages/cards/_page.svelte.js",
-    "name": "entries/pages/cards/_page.svelte",
-    "src": "src/routes/cards/+page.svelte",
-    "isEntry": true,
-    "imports": [
-      "_ssr.js",
-      "_Button.js",
-      "_client.js"
-    ],
-    "css": [
-      "_app/immutable/assets/_page.CgTIoE6C.css"
-    ]
-  },
-  "src/routes/cards/trumps/+page.svelte": {
-    "file": "entries/pages/cards/trumps/_page.svelte.js",
-    "name": "entries/pages/cards/trumps/_page.svelte",
-    "src": "src/routes/cards/trumps/+page.svelte",
-    "isEntry": true,
-    "imports": [
-      "_ssr.js",
-      "_Button.js",
-      "_index.js"
-    ],
-    "css": [
-      "_app/immutable/assets/_page.C9TMuC17.css"
-    ]
-  },
-  "src/routes/odia/+page.svelte": {
-    "file": "entries/pages/odia/_page.svelte.js",
-    "name": "entries/pages/odia/_page.svelte",
-    "src": "src/routes/odia/+page.svelte",
-    "isEntry": true,
-    "imports": [
-      "_ssr.js",
-      "_index.js",
-      "_Button.js",
-      "_india.js",
-      "_client.js"
-    ],
-    "css": [
-      "_app/immutable/assets/_page.DXaMbFy2.css"
-    ]
-  },
-  "src/routes/ui/+page.svelte": {
-    "file": "entries/pages/ui/_page.svelte.js",
-    "name": "entries/pages/ui/_page.svelte",
-    "src": "src/routes/ui/+page.svelte",
-    "isEntry": true,
-    "imports": [
-      "_ssr.js",
-      "_Button.js"
+      "_ssr.js"
     ]
   }
 }

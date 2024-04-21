@@ -7,18 +7,14 @@ function __memo(fn) {
 return {
 	appDir: "_app",
 	appPath: "_app",
-	assets: new Set([".DS_Store","cardthumb.png","close.svg","favicon.png","heart.svg","infinite.svg"]),
-	mimeTypes: {".png":"image/png",".svg":"image/svg+xml"},
+	assets: new Set(["favicon.png"]),
+	mimeTypes: {".png":"image/png"},
 	_: {
-		client: {"start":"_app/immutable/entry/start.CXBYQvKQ.js","app":"_app/immutable/entry/app.D6SGg8Sk.js","imports":["_app/immutable/entry/start.CXBYQvKQ.js","_app/immutable/chunks/entry.CtabPtQX.js","_app/immutable/chunks/scheduler.DWWUxruK.js","_app/immutable/chunks/index.BpUvwN9o.js","_app/immutable/entry/app.D6SGg8Sk.js","_app/immutable/chunks/scheduler.DWWUxruK.js","_app/immutable/chunks/index.D8lss90H.js"],"stylesheets":[],"fonts":[],"uses_env_dynamic_public":false},
+		client: {"start":"_app/immutable/entry/start.Bgwu_AZM.js","app":"_app/immutable/entry/app.BsFJjj87.js","imports":["_app/immutable/entry/start.Bgwu_AZM.js","_app/immutable/chunks/entry.CDwPRK0B.js","_app/immutable/chunks/scheduler.BvLojk_z.js","_app/immutable/entry/app.BsFJjj87.js","_app/immutable/chunks/scheduler.BvLojk_z.js","_app/immutable/chunks/index.D6A44wRX.js"],"stylesheets":[],"fonts":[],"uses_env_dynamic_public":false},
 		nodes: [
 			__memo(() => import('./nodes/0.js')),
 			__memo(() => import('./nodes/1.js')),
-			__memo(() => import('./nodes/2.js')),
-			__memo(() => import('./nodes/3.js')),
-			__memo(() => import('./nodes/4.js')),
-			__memo(() => import('./nodes/5.js')),
-			__memo(() => import('./nodes/6.js'))
+			__memo(() => import('./nodes/2.js'))
 		],
 		routes: [
 			{
@@ -26,34 +22,6 @@ return {
 				pattern: /^\/$/,
 				params: [],
 				page: { layouts: [0,], errors: [1,], leaf: 2 },
-				endpoint: null
-			},
-			{
-				id: "/cards",
-				pattern: /^\/cards\/?$/,
-				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 3 },
-				endpoint: null
-			},
-			{
-				id: "/cards/trumps",
-				pattern: /^\/cards\/trumps\/?$/,
-				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 4 },
-				endpoint: null
-			},
-			{
-				id: "/odia",
-				pattern: /^\/odia\/?$/,
-				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 5 },
-				endpoint: null
-			},
-			{
-				id: "/ui",
-				pattern: /^\/ui\/?$/,
-				params: [],
-				page: { layouts: [0,], errors: [1,], leaf: 6 },
 				endpoint: null
 			}
 		],
