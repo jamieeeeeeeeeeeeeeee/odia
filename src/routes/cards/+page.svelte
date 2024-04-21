@@ -10,12 +10,12 @@
 
 <header>
     <div id="HR">HR</div>
-    <div id="title">Home</div>
+    <div id="title">Cards</div>
 </header>
 <main>
     <div class="grid">
-        <Button text="Cards" img="cardthumb.png" type="select" callback={() => redirect("/cards")}/>
-        <Button text="Odia" img={india} type="select" callback={() => redirect("/odia")}/>
+        <Button text="Trumps" img="cardthumb.png" type="select" callback={() => redirect("/cards/trumps")}/>
+        <Button text="Strawberry Split" type="select" callback={() => redirect("/cards/strawberry-split")}/>
     </div>
 </main>
 

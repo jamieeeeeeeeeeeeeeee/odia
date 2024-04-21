@@ -16,7 +16,10 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@firebase/app": "^0.10.1",
+		"@firebase/firestore": "^4.6.0",
 		"@sveltejs/adapter-node": "^5.0.1",
-		"express": "^4.19.2"
+		"express": "^4.19.2",
+		"firebase": "^10.11.0"
 	}
 }
