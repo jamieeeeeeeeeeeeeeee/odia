@@ -9,7 +9,7 @@
 
 <div
     class="button button-{type}"
-    style={img != "" ? "height: 15vw;" : "padding: 0.2em 0;"}
+    style={img != "" ? "" : "padding: 0.2em 0;"}
     tabindex="0"
     on:click={callback}
     on:keydown={(e) => {
@@ -20,19 +20,15 @@
     role="button"
 >
     {#if img != ""}
-    <img src={img} alt={text} />
+        <img src={img} alt={text} />
+    {:else}
+        <div>
+            { text }
+        </div>
     {/if}
-    <div>
-        { text }
-    </div>
 </div>
 
 <style>
-    img {
-        width: auto;
-        height: 100%;
-    }
-
     .button {
         font-family: 'Roboto', sans-serif;
         overflow: hidden;
@@ -83,6 +79,20 @@
     .button > div {
         text-align: center;
         width: 100%;
+    }
+
+    .button-img > img{
+        height: 30vw;
+        width: auto;
+        border-radius: 0.5em;
+        transition: all 0.1s ease-in-out;
+    }
+
+    .button-img  {
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        border: none;
     }
 
     /* Media queries */

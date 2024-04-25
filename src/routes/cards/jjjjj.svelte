@@ -10,15 +10,15 @@
 
 <main>
     <div class="grid">
-        <Button text="" img="cardthumb.png" type="img" callback={() => redirect("/cards")}/>
-        <Button text="" img={india} type="img" callback={() => redirect("/odia/vowels")}/>
-    </div>
+        <Button text="Trumps" type="select" callback={() => redirect("/cards/trumps")}/>
+            <Button text="Strawberry Split" type="select" callback={() => redirect("/cards/strawberry-split")}/>
+        </div>
 </main>
 
 <style>
     .grid {
         display: grid;
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(2, 1fr); 
         gap: 1rem;
         padding: 1rem;
     }

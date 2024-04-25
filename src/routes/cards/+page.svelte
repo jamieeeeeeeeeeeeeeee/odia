@@ -1,25 +1,33 @@
 <script>
     import Button from "$lib/components/Button.svelte";
-    import india from "$lib/assets/india.png";
-    import { goto } from "$app/navigation";
+    import Entry from "$lib/components/Entry.svelte";
+    import { writable } from "svelte/store";
 
-    function redirect(link) {
-        goto(link);
-    }
+    const screen = writable("join");
 </script>
 
 <main>
-    <div class="grid">
-        <Button text="Trumps" type="select" callback={() => redirect("/cards/trumps")}/>
-            <Button text="Strawberry Split" type="select" callback={() => redirect("/cards/strawberry-split")}/>
-        </div>
+    {#if $screen == "join"}
+    <div id="join">
+      <Entry text="Username"/>
+      <Button text="Join Game" type="select"/>
+    </div>
+    {/if}
 </main>
 
 <style>
-    .grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr); /* Creates a three-column grid */
-        gap: 1rem;
-        padding: 1rem;
+    main {
+        background-color: #f0d0e0;
+    }
+
+    #join {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 60vw;
+        justify-self: center;
+        align-self: center;
     }
 </style>

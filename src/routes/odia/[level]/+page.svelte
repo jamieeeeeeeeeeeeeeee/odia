@@ -1,20 +1,21 @@
 <script>
     import Options from "$lib/components/Options.svelte";
-    import Progress from "$lib/components/Progress.svelte";
-    import Button from "$lib/components/Button.svelte";
     import india from "$lib/assets/india.png";
     import { writable } from "svelte/store";
     import { progress, options, selectedOptions } from "$lib/store.js";
     import { page } from "$app/stores";
-    import { onMount } from "svelte";
+    import { onMount, onDestroy } from "svelte";
+    import { goto } from "$app/navigation";
 
     let level  = $page.params.level;
-    let app;
-    let db;
     const info = writable({"info": "", "color": "green", "showing": false, "button": "CHECK"})
     const answer = writable("");
     const question = writable("");
 
+    export const levels = [
+        "vowels",
+        "consonants"
+    ];
 
     const docs = {};
 
@@ -43,17 +44,24 @@
     // the format is: 
     // "ଅ": {"t": "a", "e": "(a)bout"},
     // where t is translit, and e is british-english example.
-    onMount(async () => {
+
+
+    async function fetchJson() {
+        for (const key in docs) {
+            delete docs[key];
+        }
         const res = await fetch(`/odia-lang/${level}.json`);
         const data = await res.json();
         Object.keys(data).forEach((key) => {
             docs[key] = data[key];
         });
-
         console.log(docs);
         generateQuestion();
-    });
+    }
 
+    onMount(async () => {
+        fetchJson();
+    });
 
     function buttonClick() {
         if ($info.showing == false) { // i.e. answer
@@ -101,6 +109,11 @@
             generateQuestion();
         }
     }
+
+    function redirect(e) {
+        goto(`/odia/${e.target.value}`);
+        fetchJson();
+    }
 </script>
 
 <main>
@@ -123,6 +136,11 @@
 </main>
 <footer>
     <div id="hansika">For Hansika ❤️</div>
+    <select bind:value={level} on:change={redirect}>
+        {#each levels as l}
+                <option value={l}>{l}</option>
+        {/each}
+    </select>
     <div id="lang">
         <div>ଓଡ଼ିଆ<br>Odia</div>
         <img width={50} src={india} alt='India' />
@@ -130,6 +148,21 @@
 </footer>
 
 <style>
+    select {
+        font-family: "Outfit", sans-serif;
+        font-size: 1rem;
+        padding: 0.5rem;
+        border: none;
+        background-color: white;
+    }
+
+    option {
+        font-family: "Outfit", sans-serif;
+        padding: 0.5rem;
+        background-color: white;
+        color: #333;
+    }
+
     #info {
         padding-bottom: 2rem;
         display: flex;

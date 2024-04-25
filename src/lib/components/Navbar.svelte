@@ -2,7 +2,7 @@
     import { page } from "$app/stores";
 </script>
 <header>
-    <a id="HR" href="/">HR</a>
+    <a id="HR" href="/">HANSIKA RAY</a>
     <slot name="navbar"/>
     <div id="title">{$page.url.pathname}</div>
 </header>
@@ -17,6 +17,7 @@
  }
 
  #HR {
+    font-family: 'Pacifico', cursive;
     cursor: pointer;
     font-size: 1.5rem;
     font-weight: bold;
