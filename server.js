@@ -11,13 +11,13 @@ app.use(express.json());
 const server = createServer(app);
 const socket = new Server(server, { cors: { origin: "*" }, cookie: true });
 
-const modes = new Map(
+const modes = new Map([
     ["trumps", {
         defaultState: {
 
         }
     }]
-);
+]);
 const rooms = new Map();
 
 socket.on("connection", async (client) => {

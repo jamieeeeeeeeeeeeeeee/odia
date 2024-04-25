@@ -1,4 +1,4 @@
-import { fail, redirect } from "@sveltejs/kit";
+/*import { fail, redirect } from "@sveltejs/kit";
 import { authUserCredentials, newSession, SESSION_COOKIE_MAX_AGE } from "../../database";
 
 export const actions = {
@@ -37,3 +37,4 @@ export const actions = {
         throw redirect(303, "/");
     }
 };
+*/
