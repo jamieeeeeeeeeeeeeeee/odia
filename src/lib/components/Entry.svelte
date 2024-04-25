@@ -26,7 +26,7 @@
 <style>
     input {
         font-family: 'Roboto', sans-serif;
-        font-size: 2rem;
+        font-size: 2em;
         border: none;
         background-color: transparent;
         width: 100%;

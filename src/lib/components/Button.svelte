@@ -8,6 +8,8 @@
 </script>
 
 <div
+    class="button button-{type}"
+    style={img != "" ? "height: 15vw;" : "padding: 0.2em 0;"}
     tabindex="0"
     on:click={callback}
     on:keydown={(e) => {
@@ -16,46 +18,79 @@
         }
     }}
     role="button"
-    style={
-    (img == "" ? "padding: .5em 0;" : "")
-    +
-    (type == "good" ? "background-color: rgb(120, 200, 61); border-color: rgb(108, 164, 48); color: white; width: 60vw;"
-      : type == "select" ? "background-color: rgb(225, 243, 254); color: rgb(71, 152, 209); border-color: rgb(151, 214, 251);" : "")
-    }
 >
     {#if img != ""}
     <img src={img} alt={text} />
     {/if}
-    { text }
+    <div>
+        { text }
+    </div>
 </div>
 
 <style>
     img {
-        width: 100%;
-        height: auto;
+        width: auto;
+        height: 100%;
     }
 
-    div {
+    .button {
         font-family: 'Roboto', sans-serif;
         overflow: hidden;
         border: 3px solid grey;
         border-bottom-width: 5px;
-        border-radius: 1em;
+        border-radius: 0.5em;
         font-size: 2rem;
         cursor: pointer;
         background-color: white;
-        width: 45vw;
-        margin: .3em auto;
         display: flex;
-        justify-content: center;
-        font-weight: 500;
+        justify-content: space-between;
+        font-weight: 600;
         transition: scale 0.2s ease-in;
-        flex-direction: column;
+        flex-direction: row;
         align-items: center;
+        text-align: top;
+        transition: all 0.1s ease-in-out;
+        width: 100%;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-select: none;
     }
 
-    div:active {
+    .button-good {
+        background-color: #046A38;
+        border-color: #046A38;
+        width: 40vw;
+    }
+
+    .button-good > div {
+        color: white;
+    }
+
+    .button-select {
+        background-color: #06038D;
+        border-color: #06038D;
+    }
+
+    .button-select > div {
+        color: white;
+    }
+
+    .button:active {
         scale: 0.98;
         transition: scale 0.2s ease-out;
+    }
+
+    .button > div {
+        text-align: center;
+        width: 100%;
+    }
+
+    /* Media queries */
+    @media (max-width: 768px) {
+        .button {
+            height: 10vw;
+            font-size: 1.5rem;
+            border-radius: 0.5em;
+        }
     }
 </style>

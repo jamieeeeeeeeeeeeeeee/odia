@@ -2,7 +2,7 @@
     import Button from "$lib/components/Button.svelte";
     import Entry from "$lib/components/Entry.svelte";
     import { writable } from "svelte/store";
-    import Card from "$lib/components/Card.svelte";
+
     const screen = writable("join");
 </script>
 
@@ -17,8 +17,6 @@
 
 <style>
     main {
-        height: calc(100vh); /* Adjust the height as needed */
-        overflow-y: auto;
         background-color: #f0d0e0;
     }
 
@@ -28,5 +26,8 @@
         align-items: center;
         justify-content: center;
         height: 100%;
+        width: 60vw;
+        justify-self: center;
+        align-self: center;
     }
 </style>
