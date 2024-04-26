@@ -38,6 +38,14 @@
         options.set(randomKeys.sort(() => Math.random() - 0.5));
         answer.set(answerDoc);
         question.set('Translate to English: ' + answerDoc);
+        progress.update((p) => {
+            return {
+                done: p.done,
+                total: p.total,
+                thisTime: 0,
+                avgTime: p.avgTime
+            };
+        });
     }
 
     // get .json file
@@ -46,11 +54,18 @@
     // "ଅ": {"t": "a", "e": "(a)bout"},
     // where t is translit, and e is british-english example.
 
-
     async function fetchJson() {
         for (const key in docs) {
             delete docs[key];
         }
+        progress.update((p) => {
+            return {
+                done: 0,
+                total: 0,
+                thisTime: 0,
+                avgTime: 0
+            };
+        });
         const res = await fetch(`/odia-lang/${level}.json`);
         const data = await res.json();
         Object.keys(data).forEach((key) => {
@@ -64,6 +79,24 @@
         fetchJson();
     });
 
+    let interval;
+
+    onDestroy(() => {
+        if (interval) clearInterval(interval);
+    });
+
+    interval = setInterval(() => {
+        if ($info.showing) return;
+        progress.update((p) => {
+            return {
+                done: p.done,
+                total: p.total,
+                thisTime: p.thisTime + 1/100,
+                avgTime: p.avgTime
+            };
+        });
+    }, 10);
+
     function buttonClick() {
         if ($info.showing == false) { // i.e. answer
             if ($selectedOptions.has(docs[$answer].t)) {
@@ -71,6 +104,8 @@
                 return {
                     done: p.done + 1,
                     total: p.total + 1,
+                    thisTime: p.thisTime,
+                    avgTime: (p.avgTime * (p.done) + (p.thisTime)) / (p.done + 1)
                 };
             });
             info.update((i) => {
@@ -80,12 +115,14 @@
                     color: "#046A38",
                     showing: true
                 };
-            });
+            })
             } else {
             progress.update((p) => {
                 return {
                     done: p.done,
-                    total: p.total + 1
+                    total: p.total + 1,
+                    thisTime: 0,
+                    avgTime: p.avgTime
                 };
             });
             info.update((i) => {
@@ -97,6 +134,7 @@
                 };
             });
             }
+
         } else {
             selectedOptions.set(new Set());
             info.update((i) => {
@@ -132,7 +170,7 @@
     id="info"
     style={!$info.showing ? "" : "background-color: " + $info.color + ";"}
 >
-    <div style="{$info.color == "#046A38" ? "color: white;" : ""} margin: 1rem; min-width: 10rem; height: 2rem;" id="infoinfo">{$progress.total == 0 ? "Select a level with the dropdow below." : ""} {$info.showing ? $info.info : ""}</div>
+    <div style="{$info.color == "#046A38" ? "color: white;" : ""} margin: 1rem; min-width: 10rem; height: 2rem;" id="infoinfo">{$progress.total == 0 ? "Choose a category below." : ""} {$info.showing ? $info.info : ""}</div>
     <Button text={$info.button} type="good" callback={buttonClick}/>
 </div>    
 </main>

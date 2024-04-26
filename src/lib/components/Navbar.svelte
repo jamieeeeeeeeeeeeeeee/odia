@@ -2,7 +2,7 @@
     import { page } from "$app/stores";
 </script>
 <header>
-    <a id="HR" href="/">HANSIKA RAY</a>
+    <a id="HR" href="/">H</a>
     <slot name="navbar"/>
     <div id="title">{$page.url.pathname}</div>
 </header>
@@ -29,7 +29,21 @@
     color: black;
  }
 
+ #HR:after {
+    content: "ansika Ray";
+ }
+
  #title {
     font-weight: bold;
+ }
+
+ @media (max-width: 768px) {
+    #HR:after {
+        content: "R";
+    }
+
+    #title {
+        display: none;
+    }
  }
 </style>
