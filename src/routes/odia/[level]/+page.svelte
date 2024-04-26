@@ -1,6 +1,7 @@
 <script>
     import Options from "$lib/components/Options.svelte";
     import india from "$lib/assets/india.png";
+    import Button from "$lib/components/Button.svelte";
     import { writable } from "svelte/store";
     import { progress, options, selectedOptions } from "$lib/store.js";
     import { page } from "$app/stores";
@@ -131,7 +132,8 @@
     id="info"
     style={!$info.showing ? "" : "background-color: " + $info.color + ";"}
 >
-    <div style="{$info.color == "#046A38" ? "color: white;" : ""} margin: 1rem; min-width: 10rem; height: 2rem;" id="infoinfo">{$progress.total == 0 ? "Double click an answer to confirm. Click it again for the next question." : ""} {$info.showing ? $info.info : ""}</div>
+    <div style="{$info.color == "#046A38" ? "color: white;" : ""} margin: 1rem; min-width: 10rem; height: 2rem;" id="infoinfo">{$progress.total == 0 ? "Select a level with the dropdow below." : ""} {$info.showing ? $info.info : ""}</div>
+    <Button text={$info.button} type="good" callback={buttonClick}/>
 </div>    
 </main>
 <footer>
