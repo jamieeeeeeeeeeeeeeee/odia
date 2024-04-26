@@ -94,13 +94,4 @@
         background-color: transparent;
         border: none;
     }
-
-    /* Media queries */
-    @media (max-width: 768px) {
-        .button {
-            height: 10vw;
-            font-size: 1.5rem;
-            border-radius: 0.5em;
-        }
-    }
 </style>
