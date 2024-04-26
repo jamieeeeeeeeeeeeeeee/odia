@@ -50,6 +50,7 @@
         user-select: none;
         -moz-user-select: none;
         -webkit-user-select: none;
+        touch-action: manipulation;
     }
 
     .button-good {

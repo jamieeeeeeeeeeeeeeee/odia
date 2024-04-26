@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 		%sveltekit.head%
 
         <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,10 +33,17 @@
                 flex-grow: 1;
                 display: flex;
                 flex-direction: column;
+                overflow-wrap: break-word;
+                overflow-x: hidden;
             }
 
             header, footer {
                 padding: 0.64rem;
+            }
+
+            /* make it so on screens like iOS that have the browser footer, covering the footer, the footer is still visible */
+            footer {
+                margin-top: auto;
             }
         </style>
 	</head>

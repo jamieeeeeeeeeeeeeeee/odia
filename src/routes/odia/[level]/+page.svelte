@@ -111,7 +111,7 @@
             info.update((i) => {
                 return {
                     info: "Correct!",
-                    button: "NEXT QUESTION",
+                    button: "NEXT",
                     color: "#046A38",
                     showing: true
                 };
