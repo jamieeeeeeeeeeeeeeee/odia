@@ -4,6 +4,7 @@
     export let callback = function(){
       console.log("Callback function called.")
     };
+    export let value = "";
 </script>
 
 <div
@@ -20,12 +21,11 @@
       : type == "select" ? "background-color: rgb(225, 243, 254); color: rgb(71, 152, 209); border-color: rgb(151, 214, 251);" : "")
     }
 >
-    <input type="text" placeholder={text} />
+    <input type="text" placeholder={text} bind:value={value}/>
 </div>
 
 <style>
     input {
-        font-family: 'Roboto', sans-serif;
         font-size: 2em;
         border: none;
         background-color: transparent;
@@ -37,27 +37,27 @@
         -webkit-user-select: none;
         -moz-user-select: none;
         outline: none;
+        font-weight: 500;
+
     }
 
     div {
-        font-family: 'Roboto', sans-serif;
         overflow: hidden;
         border: 3px solid grey;
         border-bottom-width: 5px;
         border-radius: 1em;
-        font-size: 2rem;
+        font-size: 1.5rem;
         cursor: pointer;
         background-color: white;
-        width: 55vw;
-        margin: .3em auto;
+        margin: .3em 0;
         display: flex;
         justify-content: center;
-        font-weight: 500;
         transition: scale 0.2s ease-in;
         flex-direction: column;
         align-items: center;
         padding-left: 0.5em;
         padding-right: 0.1em;
+        width: calc(100% - 0.6em);
     }
 
     div:active {

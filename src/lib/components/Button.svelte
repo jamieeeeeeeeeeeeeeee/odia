@@ -47,6 +47,7 @@
         text-align: top;
         transition: all 0.1s ease-in-out;
         width: 100%;
+        max-width: 768px;
         user-select: none;
         -moz-user-select: none;
         -webkit-user-select: none;
@@ -56,7 +57,7 @@
     .button-good {
         background-color: #046A38;
         border-color: #046A38;
-        width: 40vw;
+        width: 65%;
     }
 
     .button-good > div {
@@ -94,5 +95,6 @@
         justify-content: center;
         background-color: transparent;
         border: none;
+        max-width: 100%;
     }
 </style>

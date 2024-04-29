@@ -1,6 +1,7 @@
 <script>
     import Button from "$lib/components/Button.svelte";
     import india from "$lib/assets/india.png";
+    import cluedo from "$lib/assets/cluedo.jpg";
     import { goto } from "$app/navigation";
 
     function redirect(link) {
@@ -12,6 +13,7 @@
     <div class="grid">
         <Button text="" img="cardthumb.png" type="img" callback={() => redirect("/cards")}/>
         <Button text="" img={india} type="img" callback={() => redirect("/odia/vowels")}/>
+        <Button text="" img={cluedo} type="img" callback={() => redirect("/cluedo")}/>
     </div>
 </main>
 

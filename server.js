@@ -9,7 +9,7 @@ app.use(express.json());
 
 // Create socket.io server
 const server = createServer(app);
-const socket = new Server(server, { cors: { origin: "*" }, cookie: true });
+const socket = new Server(server, { cookie: true });
 
 const modes = new Map([
     ["trumps", {
@@ -18,23 +18,52 @@ const modes = new Map([
         }
     }]
 ]);
+const clients = new Map();
 const rooms = new Map();
+const joinableRooms = [
+    {
+        "id": "1234",
+        "players": ["player1", "player2"]
+    }
+];
+
+class Room {
+    constructor(id, mode, host) {
+        this.id = id;
+        this.mode = mode;
+        this.users = [];
+        this.state = {};
+        this.addUser(host);
+    }
+
+    addUser(user) {
+        this.users.push(user);
+    }
+
+    removeUser(user) {
+        const index = this.users.indexOf(user);
+        if (index > -1) {
+            this.users.splice(index, 1);
+        }
+
+        if (this.users.length === 0) {
+            rooms.delete(this.id);
+        }
+    }      
+}
 
 socket.on("connection", async (client) => {
     console.log("Client connected");
+    client.emit("joinableRooms", joinableRooms);
 
-    client.on("join", (roomID) => {
-        if (rooms.has(roomID)) {
-            client.join(roomID);
-            client.emit("room", { http: 200, info: rooms.get(roomID) });
-            return;
+    client.on("create", (user, mode) => {
+        if (user == "") {
+            user = "user" + Math.floor(Math.random() * 1000);
         }
-        client.emit("room", { http: 404, info: "Room not found" });  
-    });
 
-    client.on("create", (mode) => {
+        console.log("Creating room.");
         if (!modes.has(mode)) {
-            client.emit("room", { http: 400, info: "Invalid mode" });
+            client.emit("room", { status: 400, body: "Invalid mode" });
             return;
         }
         let roomID = uuidv4();
@@ -46,14 +75,31 @@ socket.on("connection", async (client) => {
         }
 
         if (rooms.has(roomID)) {
-            client.emit("room", { http: 303, info: "Room creation timed out" });
+            client.emit("room", { status: 303, body: "Room creation timed out" });
             return;
         }
+        roomID = roomID.toString().substring(0, 5);
 
-        rooms.set(roomID, { users: [], host: client.id, mode: mode, state: modes.get(mode).defaultState });
+        const room = new Room(roomID, mode, user);
+        rooms.set(roomID, room);
         client.join(roomID);
-        client.emit("room", { http: 201, info: roomID });
+        client.emit("room", { status: 201, body: {
+            room: room,
+            host: true,
+            user: user
+        } });
+        console.log("Room created. " + roomID);
     });
+
+    client.on("join", (user, roomID) => {
+        if (rooms.has(roomID)) {
+            client.join(roomID);
+            client.emit("room", { status: 200, body: rooms.get(roomID) });
+            return;
+        }
+        client.emit("room", { status: 404, body: "Room not found" });  
+    });
+
 
     client.on("disconnect", () => {
         console.log("Client disconnected");
@@ -62,8 +108,8 @@ socket.on("connection", async (client) => {
 
 app.use(handler);
 
-/* This is being hosted using Azure Web App Service */
+// 8080 is HTTPS port, and used by Azure App Service
 const port = 8080;
-app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Server is correctly running on port ${port}`);
 });
