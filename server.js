@@ -110,6 +110,6 @@ app.use(handler);
 
 // 8080 is HTTPS port, and used by Azure App Service
 const port = 8080;
-server.listen(port, () => {
+app.listen(port, () => {
   console.log(`Server is correctly running on port ${port}`);
 });
