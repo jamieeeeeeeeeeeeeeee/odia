@@ -38,7 +38,7 @@
 <main>
     <div id="container">
         <div>
-            <h3>Guests</h3>
+            <h3 class="remove">Guests</h3>
             {#each guests as guest}
                 <Checkbox text={guest} />
             {/each}
@@ -67,6 +67,11 @@
         justify-content: center;
         height: 100%;
         align-items: center;
+    }
+
+    .remove {
+        margin-top: 0rem;
+        padding-top: 0rem;
     }
 
     #container > div {
