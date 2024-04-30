@@ -84,8 +84,8 @@
     }
 
     .button-img > img{
-        height: 30vw;
-        width: auto;
+        height: 33vw;
+        
         border-radius: 0.5em;
         transition: all 0.1s ease-in-out;
     }
@@ -96,5 +96,7 @@
         background-color: transparent;
         border: none;
         max-width: 100%;
+        object-fit: cover;
+
     }
 </style>

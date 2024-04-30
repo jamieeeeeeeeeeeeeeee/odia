@@ -5,7 +5,7 @@
     let value = false;
     let indeterminate = false;
     let nextInter = true;
-    
+
     function toggle() {
         if (value) {
             if (nextInter) {

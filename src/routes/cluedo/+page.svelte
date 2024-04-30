@@ -37,20 +37,20 @@
 
 <main>
     <div id="container">
-        <div>
-            <h3 class="remove">Guests</h3>
-            {#each guests as guest}
-                <Checkbox text={guest} />
-            {/each}
+        <div class="column">
+            <div>
+                <h3 class="remove">Guests</h3>
+                {#each guests as guest}
+                    <Checkbox text={guest} />
+                {/each}
+            </div>
+            <div>
+                <h3>Weapons</h3>
+                {#each weapons as weapon}
+                    <Checkbox text={weapon} />
+                {/each}
+            </div>
         </div>
-
-        <div>
-            <h3>Weapons</h3>
-            {#each weapons as weapon}
-                <Checkbox text={weapon} />
-            {/each}
-        </div>
-
         <div>
             <h3>Rooms</h3>
             {#each rooms as room}
@@ -79,9 +79,5 @@
     }
 
     @media (max-width: 768px) {
-        #container {
-            flex-direction: column;
-            align-items: none;
-        }
     }
 </style>
